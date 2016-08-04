@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require react_ujs
-//= require components
+// require react_ujs
+// require react_router.min
+// require components
+
 $(document).ready(function(){
 
   $('input[type="number"]').each(function(){

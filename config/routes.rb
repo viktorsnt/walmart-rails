@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'products#new'
+  # root 'welcome#index'
 
   get 'carrinho' => 'shopping_carts#cart'
   get 'checkout/:id' => 'shopping_carts#checkout'
