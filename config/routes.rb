@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root 'products#new'
+
+  get 'carrinho' => 'shopping_carts#cart'
+  get 'checkout/:id' => 'shopping_carts#checkout'
+  put 'check_out' => 'shopping_carts#check_out'
+
+  resources :cart_items, only: [:destroy, :update]
+  resources :products
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
