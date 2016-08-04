@@ -4,7 +4,8 @@ class ShoppingCartService
     end
 
     def finalize
-      if @cart.in_progress? && (@cart.subtotal > 200)
+      # if @cart.in_progress? && (@cart.subtotal > 200)
+      if @cart.subtotal > 200
         apply_discount
         @cart.completed!
         @cart.save
