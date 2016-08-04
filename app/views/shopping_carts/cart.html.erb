@@ -1,0 +1,24 @@
+<h1>Carrinho</h1>
+
+<% @cart_items.each do |item| %>
+<%= item.product.name %>
+<%= form_for item, remote: true do |f| %>
+<h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency item.product.list_price %></span></h4>
+<div class="row">
+  <div class="col-xs-4">
+    <%= f.number_field :quantity, value: item.quantity.to_i, class: "form-control", min: 1 %>
+    <%= f.hidden_field :product_id, value: item.product.id %>
+  </div>
+  <div class="col-xs-8 text-right">
+    <div class="btn-group">
+      <%= f.submit "Update Quantity", class: "btn btn-primary" %>
+      <%= link_to "Delete", item, { data: { confirm: "Are you sure you wish to delete the product '#{item.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
+    </div>
+  </div>
+</div>
+<h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency item.total %></span></h4>
+<% end %>
+<% end %>
+
+<%= link_to "Adicionar Produto", '/' %>
+<%= link_to "Finalizar", url_for(controller: 'shopping_carts', action: 'check_out'), method: :put %>
