@@ -1,5 +1,45 @@
-<h1>New Product</h1>
+<h1 class="site-title">Adicionar Produto</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <section class="col-sm-12">
+    <%= form_for @product, :html => {:class => ""} do |f| %>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-<%= link_to 'Back', products_path %>
+          <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <!-- <div class="form-group">
+        <%= f.label :image %><br>
+        <%= f.text_field :image, class: "form-control" %>
+      </div> -->
+      <div class="form-group">
+        <%= f.label :brand %><br>
+        <%= f.text_field :brand, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :seller %><br>
+        <%= f.text_field :seller, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :list_price %><br>
+        <%= f.text_field :list_price, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :best_price %><br>
+        <%= f.text_field :best_price, class: "form-control" %>
+      </div>
+      <%= f.submit 'Cadastrar produto', class: "btn btn-green" %>
+      <%= link_to "Carrinho", '/carrinho', class: "btn btn-green pull-right" %>
+    <% end %>
+  </section>
+</div>

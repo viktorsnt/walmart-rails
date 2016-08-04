@@ -1,23 +1,84 @@
-<p id="notice"><%= notice %></p>
+<h2 class="site-title text-center">
+  <i class="fa fa-check-circle green"></i>
+  <br>
+  Seu pedido foi enviado com sucesso! Obrigado por comprar no Walmart
+  <br>
+  <small>Número do pedido: <span class="green"><%= @shopping_cart.id %></span> </small>
+</h2>
 
-<p>
-  <strong>Status:</strong>
-  <%= @shopping_cart.status %>
+<p class="hidden">
+  <strong>Status:</strong> <%= @shopping_cart.status %>
 </p>
 
-<p>
-  <strong>Total:</strong>
-  <%= @shopping_cart.total %>
-</p>
+<h4>Resumo do pedido</h4>
 
-<p>
-  <strong>Subtotal:</strong>
-  <%= @shopping_cart.subtotal %>
-</p>
+<section class="row cart-container">
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <h5>Número do pedido: <span class="green"><%= @shopping_cart.id %></span></h5>
+      <p>Atenção: Você receberá um e-mail com a confirmação e todos os detalhes do seu pedido. Por favor, verifique as configurações AntiSpam do seu provedor de e-mail.</p>
+    </div>
+    <div class="col-sm-6">
+      <h5>Forma de pagamento</h5>
+      <p>Boleto bancário<br>Valor: R<%= number_to_currency @shopping_cart.total %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Discount:</strong>
-  <%= @shopping_cart.discount %>
-</p>
+  <div class="col-sm-12" style="border-top:1px solid #d2d2d2;">
+    <div class="col-sm-6" style="border-right:1px solid #d2d2d2;">
+      <h5><i class="fa fa-user"></i> Seus dados</h5>
+      <div class="col-sm-6">
+        <p>John Doe<br>(11)2164-3750</p>
+      </div>
+      <div class="col-sm-6">
+        john.doe@email.com
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <h5><i class="fa fa-home"></i> Endereço de entrega</h5>
+      <p>Alameda Araguaia, 2751 - Barueri - SP, 06455-906</p>
+    </div>
+  </div>
 
-<%= link_to 'Back', '/' %>
+  <div class="col-sm-12" style="border-top:1px solid #d2d2d2;">
+    <div class="col-sm-12">
+      <h5><i class="fa fa-envelope-o"></i> Entrega</h5>
+      <div class="text-right">Entrega em até 4 dias úteis</div>
+      <div class="col-sm-8">
+        <h6>Descrição do produto</h6>
+      </div>
+      <div class="col-sm-4 text-right">
+        <h6>Quantidade</h6>
+      </div>
+      <ul class="col-sm-12">
+        <% @cart_items.each do |item| %>
+          <li class="row">
+            <div class="col-sm-8">
+              <%= item.product.name %>
+            </div>
+            <div class="col-sm-4 text-right">
+              <%= item.quantity %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-12 text-right cart-footer">
+    <p>
+      <strong>Subtotal:</strong>
+      R<%= number_to_currency @shopping_cart.subtotal %>
+    </p>
+    <p>
+      <strong>Discount:</strong>
+      <%= (@shopping_cart.discount * 100).to_i %>%
+    </p>
+    <p>
+      <strong>Total:</strong>
+      R<%= number_to_currency @shopping_cart.total %>
+    </p>
+  </div>
+
+</section>
+
+<%= link_to 'Voltar para lista de produtos', '/carrinho', class: "btn btn-green pull-right" %>

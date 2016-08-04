@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Walmart</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <%= image_tag 'logo-header' %>
+  </header>
+
+  <p id="notice"><%= notice %></p>
+
+  <main class="container">
+    <%= yield %>
+  </main>
+
+  <footer class="text-center">
+    <div class="social">
+      <%= image_tag 'logo-footer' %>
+      <ul class="social-list">
+        <li class="social-items">
+          <a href="https://www.facebook.com/walmart.com" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li class="social-items">
+          <a href="https://twitter.com/walmartcom/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li class="social-items">
+          <a href="https://plus.google.com/u/0/+MundoWalmart/posts" title="Google Plus" target="_blank"><i class="fa fa-google-plus"></i></a>
+        </li>
+        <li class="social-items">
+          <a href="https://www.instagram.com/walmartcom/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+        </li>
+        <li class="social-items">
+          <a href="https://www.youtube.com/user/mundowalmart" title="Youtube" target="_blank"><i class="fa fa-youtube"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p>WMB COMÉRCIO ELETRÔNICO LTDA.</p>
+      <p>CNPJ/MF:14.314.050/0001-58 Inscrição Estadual: 206.159.582.118</p>
+      <p>Endereço: Avenida Tamboré, 267, 8º andar, Alphaville, Barueri, SP, CEP 06460-000</p>
+      <p><a href="mailto:atendimento@walmart.com.br">atendimento@walmart.com.br</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
